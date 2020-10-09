@@ -23,7 +23,5 @@ comments: true
 <p>This project built on the information in a <strong><a href="https://towardsdatascience.com/making-interactive-maps-in-r-with-less-than-15-lines-of-code-bfd81f587e12">Towards Data Science</a></strong>&nbsp;Medium post by Brandon Walker.</p>
 <h2 id="question_3">Data</h2>
 <p>These maps were built using data from the <strong><a href="https://www.phoenixopendata.com/dataset/libraries/resource/b7158429-b69e-4f87-8a96-b4857c6d65b5">Phoenix, AZ Open Data Portal</a></strong>. The data was not linked through the API (since it was broken at the time of creation) so the data is static as of 10/1/2020.</p>
-<h2 id="question_4">Pre-processing</h2>
-<p>The data from this portal is fairly minimal and requires very little preprocessing. For <strong><a href="https://cran.r-project.org/web/packages/leaflet/index.html">Leaflet</a></strong> to work properly, we need more than just the address of the library - which is provided in the data frame under `libraries$AddressFull`.</p>
 <h1 id="question_6">The Maps</h1>
 <p><a href="https://rpubs.com/sharri65/PHXLib"><img src="https://i.imgur.com/FY8HgsO.jpg" width="750" height="537" /></a></p>
