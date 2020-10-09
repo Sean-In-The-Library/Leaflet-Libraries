@@ -2,6 +2,7 @@
 layout: post
 title: Old Projects
 subtitle: Here's a random old project that I made with Tableau
+thumbnail-img: /assets/img/book.png
 tags: [libary]
 comments: true
 ---
