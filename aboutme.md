@@ -4,7 +4,7 @@ title: About me
 subtitle: Why you'd want me as your law librarian
 ---
 
-My name Sean Harrington. I have:
+My name is Sean Harrington. I have:
 
 - A law degree
 - A library master's
