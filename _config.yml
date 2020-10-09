@@ -6,19 +6,17 @@
 # --- Required options --- #
 
 # Name of website
-title: My Website
+title: Leaflet Libraries of Phoenix
 
 # Your name to show in the footer
-author: Some Person
+author: Sean Harrington
 
 # --- List of links in the navigation bar --- #
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  ASU Law Library: "https://lawlib.asu.edu/"
+  Author's home: "https://github.com/Sean-In-The-Library"
 
 # --- Logo --- #
 
@@ -39,10 +37,10 @@ round-avatar: true
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "someone@example.com"
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
+  email: "sean.harrington@asu.edu"
+  #facebook: deanattali
+  github: "https://github.com/Sean-In-The-Library"
+  twitter: "https://twitter.com/SeanLovesBooks"
 #  reddit: yourname
 #  linkedin: daattali
 #  xing: yourname
@@ -70,22 +68,22 @@ rss-description: This website is a virtual proof that I'm awesome
 # Select which social network share links to show in posts
 share-links-active:
   twitter: true
-  facebook: true
-  linkedin: true
+  facebook: false
+  linkedin: false
   vk: false
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"
+url-pretty: "https://isearch.asu.edu/node/347427/"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
 excerpt_length: 50
 
 # Whether or not to show an excerpt for every blog post in the feed page
-feed_show_excerpt: true
+feed_show_excerpt: false
 
 # Whether or not to show a list of tags below each post preview in the feed page
-feed_show_tags: true
+feed_show_tags: false
 
 # The keywords to associate with your website, for SEO purposes
 #keywords: "my,list,of,keywords"
@@ -185,7 +183,7 @@ date_format: "%B %-d, %Y"
 # --- You don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Toronto"
+timezone: "America/Arizona"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
