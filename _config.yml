@@ -29,7 +29,7 @@ round-avatar: true
 
 # If you want to have an image logo in the top-left corner instead of having the title of the website,
 # then specify the following parameter
-title-img: assets/img/book.png
+# title-img: assets/img/book.png
 
 
 # --- Footer social media links --- #
@@ -74,7 +74,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "https://isearch.asu.edu/node/347427/"
+# url-pretty: "https://isearch.asu.edu/node/347427/"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
 excerpt_length: 50
