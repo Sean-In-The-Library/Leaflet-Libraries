@@ -1,16 +1,17 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Why you'd want me as your law librarian
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+My name Sean Harrington. I have:
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+- A law degree
+- A library master's
+- I love to help people
 
 What else do you need?
 
 ### My story
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I'm a transplant from the beaches of Southern California who is passionate about emerging technologies in the law librarian field.
