@@ -1,0 +1,167 @@
+== Big data, streams and samples
+[Big data in general]
+What are two differences between large-scale computing and big data processing?
+*=the hardware
+*=Big Data is more suitable for finding new patterns in data than Large Scale Computing
+*the amount of processing time available
+*the number of passes made over the data
+*the type of algorithms that can be employed
+*the amount of data processed
+
+What is an often occurring phenomenon when comparing simple/complex algorithms on small/big data?
+* On small data simple algorithms work very well.
+*= On large data simple algorithms work very well.
+* On small data complex algorithms fail.
+* On large data complex algorithms perform much better than simple algorithms.
+
+What does it mean when an algorithm is said to 'scale well'?
+*= The running time does not increase exponentially when data becomes longer.
+*= The result quality goes up when the data becomes larger.
+*= The memory usage does not increase expoentially when data becomes larger. 
+* The result quality remains the same when the data becomes larger.
+
+Which of the following scenarios is a scenario where real-time processing is required?
+* A bank wants to aggregate the savings of all its customers across individual bank accounts to provide this information to the tax authorities. ::Tax authorities are not known for their real-time processing speed.
+*= Every second a flood monitoring centre receives information from thousands of sensors embedded in dikes. Unusual readings are relayed to the authorities.
+* Twitter receives thousands of messages every second. Twitter wants to compute how many messages were posted last year by all users in the US. 
+* Philae, a ESA robot probe, has just landed on the comet 67P. It sends massive amounts of data back to earth which are used to steer the robot. ::The communication lag between earth and Philae is several minutes.
+*= A cloud administrator at Netflix has to be notified when a more than 1% of their servers log an abnormal amount of errors, to prevent an outage (and thus a huge loss of money). ::Every second of delay costs money.
+* Each Android device periodically sends usage information to Google in order to determine device OS fragmentation (i.e.: what % of devices are still running Android  x.x?)
+
+[Streams and samples]
+
+Which attribute is _not_ indicative for data streaming?
+* Limited amount of memory
+* Limited amount of processing time
+*= Limited amount of input data
+* Limited amount of processing power
+
+Which of the following statements about data streaming is true?
+* Stream data is always unstructured data.
+*= Stream data often has a high velocity.
+* Stream elements cannot be stored on disk.
+* Stream data is always structured data.
+
+Which of the following statements about sampling are correct?
+*= Sampling reduces the amount of data fed to a subsequent data mining algorithm.
+* Sampling reduces the diversity of the data stream.
+* Sampling increases the amount of elements in a data stream. ::Noooooo.
+* Sampling increases the amount of data fed to a data mining algorithm. ::Nooooo.
+*= Sampling aims to keep statistical properties of the data intact.
+* Sampling algorithms often need multiple passes over the data.
+
+What is the main difference between standard reservoir sampling and min-wise sampling?
+* Reservoir sampling makes use of randomly generated numbers whereas min-wise sampling does not.
+* Min-wise sampling makes use of randomly generated numbers whereas reservoir sampling does not.
+*= Reservoir sampling requires a stream to be processed sequentially, whereas min-wise does not.
+* For larger streams, reservoir sampling creates more accurate samples than min-wise sampling.
+
+Which of the following statements about the Misra-Gries algorithm is correct?
+*= It never produces false negatives, i.e. all items that are frequent will be found by the algorithm.
+* It never produces false positives, i.e. all items found by the algorithm will be frequent.
+* It does multiple passes over the input-data.
+* It produces an exact answer.
+* When run with $k=3$, the output contains the 3 most frequent items.
+
+A Bloom filter guarantees no
+* false positives
+*= false negatives
+* false positives and false negatives
+* false positives or false negatives, depending on the Bloom filter type
+
+Which of the following statements about standard Bloom filters is correct?
+* It is possible to delete an element from a Bloom filter.
+* A Bloom filter always returns the correct result.
+* It is possible to alter the hash functions of a full Bloom filter to create more space.
+*= A Bloom filter always returns TRUE when testing for a previously added element.
+
+The "Twitter datastream" contains tuples of the form:
+||CODE:java:
+(messageID, message, userID_of_posting_user, in_reply_to_messageID, time_of_posting, language_of_message).
+||
+You can assume that $messageID$ and $userID$ are unique, i.e. every message has a unique identifier and every user has a unique identifier. If the message is not posted in reply to any other message, we have $in\_reply\_to\_messageID=null$.
+Examples of tuples in that stream are:
+||CODE:java:
+(124324234324, "@Nelly: I had breakfast just now!", 33523232, 122192225674, "23/11/2014", "English").
+(435345332432, "Sitting in Paris, drinking a coffee", null, 122198435674, "24/11/2014", "English").
+||
+We want to answer queries by sampling roughly 1/10th of the data. What is a good sampling strategy to answer the following query: What is the fraction of messages written in English?
+* Sample $userID$s and include all messages by a user
+* Sample $language\_of\_message$ and include all messages of a language
+*= Generate a random number $r$ between 0 and 9 and sample the tuple if $r==0$.
+* Sample $messageIDs$ and include all messages with a particular $messageID$
+
+Consider the same data as in the previous question. What is a good sampling strategy to answer the following query: What fraction of users post only in English?
+*= Sample $userID$s and include all messages by a user
+* Sample $language\_of\_message$ and include all messages of a language
+* Sample by the combined key $(userID,language\_of\_message)$
+* Generate a random number $r$ between 0 and 9 and sample the tuple if $r==0$
+
+Consider the same data as in the previous two questions. What is a good sampling strategy to answer the following query: How many replies does a tweet have on average?
+* Sample $(userID, in\_reply\_to\_messageID)$
+* Sample $userID$s and include all messages by a user
+*= Sample $in\_reply\_to\_messageID$s
+* Generate a random number $r$ between 0 and 9 and sample the tuple if $r==0$
+
+The FM-sketch algorithm uses the number of zeros the binary hash value ends in to make an estimation. Which of the following statements is true about the hash tail?      
+*= Any specific bit pattern is equally suitable to be used as hash tail.
+* Only bit patterns with more 0's than 1's are equally suitable to be used as hash tails.
+* Only the bit patterns 0000000..00 (list of 0s) or 111111..11 (list of 1s) are suitable hash tails.
+* Only the bit pattern 0000000..00 (list of 0s) is a suitable hash tail.
+
+The FM-sketch algorithm can be used to:      
+*= Estimate the number of distinct elements.
+* Sample data with a time-sensitive window.
+* Estimate the frequent elements.
+* Determine whether an element has already occurred in previous stream data.
+
+The DGIM algorithm was developed to estimate the counts of 1's occur within the last $k$ bits of a stream window $N$. Which of the following statements is true about the estimate of the number of 0's based on DGIM?    
+* The number of 0's cannot be estimated at all.
+*= The number of 0's can be estimated with a maximum guaranteed error.
+* To estimate the number of 0s and 1s with a guaranteed maximum error, DGIM has to be employed twice, one creating buckets based on 1's, and once created buckets based on 0's.
+
+Which of the following statements about the standard DGIM algorithm are false?    
+* DGIM operates on a time-based window.
+* DGIM reduces memory consumption through a clever way of storing counts.
+* In DGIM, the size of a bucket is always a power of two.
+*= The maximum number of buckets has to be chosen beforehand. 
+*= The buckets contain the count of 1's and each 1's specific position in the stream. 
+
+What are DGIM’s maximum error boundaries?
+* DGIM always underestimates the true count; at most by 25%
+*= DGIM either underestimates or overestimates the true count; at most by 50%
+* DGIM always overestimates the count; at most by 50%
+* DGIM either underestimates or overestimates the true count; at most by 25%
+
+Which algorithm should be used to approximate the number of distinct elements in a data stream?
+* Misra-Gries
+* Alon-Matias-Szegedy
+* DGIM
+*= None of the above
+
+Which of the following statements about Bloom filters are correct?
+* A Bloom filter has the same properties as a standard Hashmap data structure in Java (java.util.HashMap).
+* A Bloom filter is full if no more hash functions can be added to it.
+* A Bloom filter always returns FALSE when testing for an element that was not previously added.
+*= A Bloom filter always returns TRUE when testing for a previously added element.
+*= An empty Bloom filter (no elements added to it) will always return FALSE when testing for an element.
+
+Which of the following streaming windows show valid bucket representations according to the DGIM rules?
+* <span class="bucket">1 0 1 1 1</span> 0 1 0 <span class="bucket">1 1 1 1</span> 0 <span class="bucket">1 0 1</span>
+* <span class="bucket">1 0 1 1 1</span> 0 0 0 0 <span class="bucket">1 1 0 0</span> 0 <span class="bucket">1 0 1</span> <span class="bucket">1 1</span> 0 0 <span class="bucket">1</span>
+* <span class="bucket">1 1 1 1</span> 0 0 <span class="bucket">1 1</span> <span class="bucket">1 0 1 0</span> <span class="bucket">1</span>
+*= <span class="bucket">1 0 1 1 0 0 0 1</span> 0 <span class="bucket">1 1 1 0 1</span> <span class="bucket">1 0 0 1</span> 0 <span class="bucket">1</span> <span class="bucket">1</span>
+
+For which of the following streams is the second-order moment $F_2$ greater than 45?
+* 10 5 5 10 10 10 1 1 1 10
+*= 10 10 10 10 10 5 5 5 5 5
+* 1 1 1 1 1 5 10 10 5 1
+*= 10 10 10 10 10 10 10 10 10 10
+
+
+What is the space complexity of the FREQUENT algorithm? Recall that it aims to find all elements in a sequence whose frequency exceeds $\frac{1}{k}$ of the total count. In the equations below, $n$ is the maximum value of each key and $m$ is the maximum value of each counter.
+*= $O(k(\log m + \log n))$
+* $o(k(\log m + \log n))$
+* $O(\log k(m+n))$
+* $o(\log k(m+n))$
+

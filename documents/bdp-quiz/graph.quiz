@@ -1,0 +1,66 @@
+== Graphs and Pregel/Giraph
+[]
+For graphs similar to the one shown below, how many iterations are at most required to compute parallel breadth-first search in Hadoop?
+||IMG:graph1.png||
+* The max. number of iterations depends on the diameter of the graph.
+*= The max. number of iterations depends on the number of nodes in the graph.
+* The max. number of iterations depends on the number of edges in the graph.
+* The max. number of iterations does not depend on either of these three aspects (diameter, number of nodes, number of edges).
+
+You are given the Giraph code shown below. You can assume as input a directed graph (all edge weights are 1.0) which is encoded in adjacency list format (each node is encoded together with all its outgoing edges). What does this code compute?
+||IMG:giraph1.png||
+* A node's PageRank score.
+* The shortest path between any two nodes in the graph.
+*= A node's inlink count.
+* A node's outlink count.
+
+To compute breadth-first search in Giraph, what information needs to be send across the network for each superstep?
+* The entire graph structure.
+*= The recomputed distances.
+* The nodes and their associated meta-data.
+* The edges and their associated meta-data.
+
+To compute PageRank in Pregel, an Aggregator is used. What is it used for?
+* To compute the out-degree of each node.
+*= To compute the PageRank mass of dangling nodes.
+* To compute the sum of all PageRank mass in the graph.
+* To compute the PageRank score of each node.
+
+ 	
+An aggregator in Giraph/Pregel is somewhat similar to a counter in Hadoop. What is the main difference? 
+* Counters are meant to let machines communicate small values, aggregators are not meant to do that.
+*= Aggregators provide reliable values during the execution of a job, Counters only provide reliable values after the job has been executed.
+* Counters can be used to terminate a job, based on the counter value. Aggregators cannot be used to achieve this.
+* Aggregators and counters are the same. Only their names are different.
+
+Which of the following statements is true?
+Vertices that have voted to halt in Pregel/Giraph ...
+* cannot be reactivated.
+* can only be reactivated through an aggregator.
+*= can be reactivated through incoming messages.
+* can be reactivated through the combiner.
+
+When Pregel/Giraph are used to compute the minimum existing vertex value in a directed graph, the final value read from an arbitrary vertex will always be correct if ...
+*= the graph is strongly connected.
+* the graph is weakly connected.
+* the graph is bipartite.
+* the graph has a bow-tie structure.
+
+What is the minimum number of supersteps required when using Pregel/Giraph to compute the outdegree of each vertex in a directed graph?
+* One superstep if the adjacency list of a vertex $v$ contains the IDs of all vertices linking to $v$.
+*= One superstep if the adjacency list of a vertex $v$ contains the IDs of all vertices that $v$ links to.
+* Zero supersteps if the adjacency list of a vertex $v$ contains the IDs of all vertices that $v$ links to.
+* Two supersteps if the adjacency list of a vertex $v$ contains the IDs of all vertices linking to $v$.
+
+When does the shuffling & sort phase take place in Giraph?
+* After every superstep.
+* After every $n$ supersteps ($n$ can be set by the developer).
+*= Never.
+* That depends on the task to solve; it can be switched on by the developer.
+
+
+Which of the following statements about Giraph are correct?
+* Giraph employs both Hadoop’s map and reduce phases to run computations.
+*= Giraph employs ZooKeeper to enforce barrier waits.
+*= Computations on data are performed in memory as much as possible.
+* Giraph employs ZooKeeper to distribute the messages sent in superstep $S$ to the correct recipients in superstep $S+1$.
