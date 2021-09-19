@@ -23,7 +23,7 @@ description: Academic website and blog
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/avatar-icon2.jpg"
+avatar: "law-librarian/img/avatar-icon2.jpg"
 
 # List of links in the navigation bar
 navbar-links:
@@ -41,7 +41,7 @@ author:
   email: "sean.harringont@asu.edu"
   github: sean-in-the-library    # eg. daattali
   twitter: SeanLovesBooks   # eg. daattali
-  og_image: "/img/avatar-icon2.jpg"
+  og_image: "law-librarian/img/avatar-icon2.jpg"
 
 # Select which links to show in the footer
 footer-links-active:
