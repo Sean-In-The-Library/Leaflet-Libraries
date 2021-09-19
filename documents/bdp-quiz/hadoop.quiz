@@ -1,0 +1,257 @@
+== MapReduce and Hadoop
+[]
+Which of the following statements are true about key/value pairs in Hadoop?
+* A map() function can emit up to a maximum number of key/value pairs (depending on the Hadoop environment).
+*= A map() function can emit anything between zero and an unlimited number of key/value pairs.
+* A reduce() function can iterate over key/value pairs multiple times.
+*= A call to reduce() is guaranteed to receive key/value pairs from only one key.
+
+Consider the pseudo-code for MapReduce's WordCount example (not shown here). Let's now assume that you want to determine the frequency of phrases consisting of 3 words each instead of determining the frequency of single words. Which part of the (pseudo-)code do you need to adapt? 
+*= Only map()
+* Only reduce()
+* map() and reduce()
+* The code does not have to be changed.
+
+Consider the pseudo-code for MapReduce's WordCount example (not shown here). Let's now assume that you want to determine the average amount of words per sentence. Which part of the (pseudo-)code do you need to adapt? 
+* Only map()
+* Only reduce()
+*= map() and reduce()
+* The code does not have to be changed.
+
+Which of the following statements about Hadoop's partitioner are true?
+* The partitioner determines to which specific machine in the cluster a particular key/value pair is sent.
+*= The partitioner determines which keys are processed on the same machine.
+* The partitioner determines which values are assigned to the same key.
+* The partitioner determines the order of key/value processing.
+*= The partitioner can increase performance when the key-space is skewed (i.e. some keys get emitted a lot more than other keys).
+
+Which of the following statements about Hadoop's partitioner are true?
+* The partitioner can make sure one key is processed by two reducers.
+* The partitioner is run before the map-phase.
+*= The partitioner is run inbetween the map and reduce phases.
+* The partitioner is run after the reduce-phase.
+*= The partitioner determines which keys are processed on the same machine.
+
+Consider Hadoop's WordCount program: for a given text, compute the frequency of each word in it. The input is read line by line.
+As input, you are given one le that contains a single line of text: 
+||CODE:java:
+A Ram Sam Sam
+||
+How many Mapper objects and Reducer objects are created? How many calls to map() and reduce() are made?
+* 3 Mapper objects, 1 Reducer object, 3 calls of map(), 1 calls to reduce()
+* 3 Mapper objects, 3 Reducer objects, 1 call of map(), 1 call to reduce()
+* 1 Mapper object, 3 Reducer objects, 3 calls of map(), 3 calls to reduce()
+*= 1 Mapper object, 1 Reducer object, 1 call of map(), 3 calls to reduce()
+
+[GFS/HDFS]
+
+Which of the following scenarios fulfils the brief of the GFS assumptions?
+*= The YouTube videos of the last five years are processed to determine the percentage of videos containing cats.
+* The European road sensor system collects the data of billions of road sensors that transmit information on the number of cars crossing the sensor, their speed, the weather conditions, etc. The data is fed into a machine learner to recognize accidents and inform the relevant emergency services to enable faster response times. ::The important phrase here is "faster response times".
+* All UK security cameras are sending their data to a data centre where machine learning and pattern recognition is used to detect ongoing thefts and burglaries. ::The important term here is "ongoing".
+* Finding the next prime number, starting from a given known prime number.
+*= Flickr wants to do a large scale processing job of tagging every photo with a label that describes the contents of the photo.
+* Bol.com stores information on all their products (images, description, etc.) to serve to customers via their website. ::Website implies access with milliseconds.
+
+Let's assume we have a Hadoop cluster with 12 Petabytes of disk space and replication factor 4. What can you say about the maximum possible file size?
+* The maximum size of a file is restricted to the disk size of the largest DataNode.
+* The maximum size of a file is restricted by the physical disk space available on the NameNode.
+*= The maximum size of a file cannot exceed 3 Petabytes.
+* Files of any size can be processed in the cluster.
+
+When adding $n$ GB of disk space to a DataNode in a Hadoop cluster, how much GB of additional space becomes available to the HDFS volume? Assume that replication has been switched off.
+*= Almost $n$ GB.
+* Approximately $n^2$ GB.
+* About $0.25n$ GB.
+* No additional space is gained.
+
+ 	
+When adding $n$ GB of disk space to a NameNode in a Hadoop cluster, how much GB of additional space becomes available to the HDFS volume? Assume that replication has been switched off. 
+* Almost $n$ GB.
+* Approximately $n^2$ GB.
+* About $0.25n$ GB.
+*= No additional space is gained. ::This assumes that the NameNode does not double as DataNode!
+
+ 	
+Which of the following statements is correct about Heartbeat messages in a Hadoop cluster? 
+*= A heartbeat message is sent every 5 to 30 seconds by every active DataNode.
+* A heartbeat message is sent at most once a day by each active DataNode.
+* A group of DataNodes together sends a single heartbeat message to save network bandwidth.
+* Heartbeat messages are not send by DataNodes, they are only sent by the NameNode, one every 5 seconds.
+
+
+For which of the following operations is NO communication with the NameNode required? 
+* A client writing a file to HDFS.
+* A client requesting the filename of a given block of data.
+*= A client reading a block of data from the cluster.
+* A client reading a file from the cluster.
+
+The operation (or on Hadoop: edit) log is essential to ensure that
+* the HeartBeat system can recover after a crash.
+*= the NameNode can recover after a crash.
+* the DataNodes can recover after a crash.
+* the data on a cluster can easily be replicated to another location.
+
+Which of the following components reside on a NameNode?
+* filenames, blocks and checksums
+* blocks and heartbeat messages
+*= filenames, block locations
+* blocks and block locations
+
+What is the purpose of the setup/cleanup methods in a Hadoop job?
+* To enable combiners to initialize a global resource.
+*= To enable both mappers and reducers to initialize a global resource.
+* To enable mappers and reducers to execute some code before every map()/reduce() call.
+* To configure a Hadoop job.
+
+ 	
+For which of the following scenarios can we employ Hadoop's user-defined Counters? 
+* To count the number of users currently using the cluster.
+*= To count the number of keys appearing in reducers with more than 10 values "attached" to them.
+* To count the number of heartbeat messages sent by the user's map tasks.
+* To count the number of machines in the cluster processing the user's job.
+
+For which of the following scenarios can we employ Hadoop's user-defined Counters?
+* To log the job status (block usage, network usage, etc.) in real-time.
+* To set global variables that can be read by each mapper/reducer currently active.
+*= To count the number of unique keys appearing across all reducers for a given job.
+* To enable direct communication between map tasks running on different machines.
+
+ 	
+Bob has a Hadoop cluster with 20 machines with the following Hadoop setup: replication factor 2, 128MB input split size. Each machine has 500GB of HDFS disk space. The cluster is currently empty (no job, no data). Bob intends to upload 4 Terabytes of plain text (in 4 files of approximately 1 Terabyte each), followed by running Hadoop’s standard WordCount1 job. What is going to happen?
+* The data upload fails at the first file: it is too large to fit onto a DataNode.
+* The data upload fails at a later stage: the disks are full.
+* WordCount fails: too many input splits to process.
+*= WordCount runs successfully.
+
+Bob has a Hadoop cluster with 20 machines under default setup (replication 3, 128MB input split size). Each machine has 500GB of HDFS
+disk space. The cluster is currently empty (no job, no data). Bob intends to upload 5 Terabyte of plain text (in 10 files of approximately 500GB each), followed by running Hadoop’s standard WordCount1 job. What is going to happen?
+* The data upload fails at the first file: it is too large to fit onto a DataNode
+*= The data upload fails at a lager stage: the disks are full
+* WordCount fails: too many input splits to process.
+* WordCount runs successfully.
+
+In Hadoop, the optimal input split size is the same as the
+*= block size
+* average file size in the cluster
+* mininum hard disk size in the cluster
+* number of DataNodes 
+
+In Hadoop, a Counter is attached to a specific ...
+* Mapper
+* Reducer
+* machine in the cluster
+*= job
+
+Which of the following operations require communication with the NameNode?
+*= A client deleting a file from HDFS.
+*= A client reading a file from HDFS.
+*= A client requesting the filename of a given block of data.
+* A client writing to the local file system.
+
+
+ 	
+You have a search engine's query log of the form:
+||CODE:java:
+[userid],[timestamp],[query],[url],[click],[dwell-time]
+||
+where the userid is the IP address of the user and the timestamp is the time at which the action took place (in epoch). 
+The user either submits a query to the search engine (in which case query contains the query string submitted, otherwise this value is empty) or views a result list and clicks on a URL (stored in click, otherwise this value is empty). If the user clicked a URL, the log also shows the amount of time in seconds the user spent on the URL (the dwell-time).
+A concrete toy example of a query log is the following:
+||CODE:java:
+312121,1417789177,britney spears,,,,
+312121,1417789245,britnay spears,,,,
+324325,1417712245,tom jones,,,,
+312121,1417789247,,http://en.wikipedia.org/wiki/Britney_Spears,25
+324325,1417712111,tom jones singer,,,,
+324325,1417712121,,http://en.wikipedia.org/wiki/Tom_Jones_%28singer%29,1
+324325,1417712240,,http://www.tomjones.com/,987
+||
+Here, user 312121 searches twice for Britney Spears (different spellings) and later clicks on the Wikipedia link and spends 25 seconds on it. The user 324325 searches for Tom Jones and visits Wikipedia for 1 second and then spends a lot of time on the official Tom Jones web site. The log is neither sorted by userid nor by time.
+We want to know the number of unique queries submitted. To do this, we need to write a Hadoop job that contains:
+* only a Mapper
+*= only a Mapper and a Reducer
+* only a Mapper and a Counter
+* only a Reducer and a Counter
+
+Consider the search engine log again. We want to learn how much time on average users spend on clicked URLs. We use a resolution of one minute (i.e. all URLs viewed between 1 and 60 seconds by a user are counted together, all URLs viewed between 61 seconds and 120 seconds are counted together, etc.). Dwell times above 24 hours are counted together (as data noise).
+A Hadoop job is written: the mapper outputs as key/value pair (*,[dwell-time]) for each query log line that contains a click (the value is the actual dwell time). The reducer uses local aggregation:
+||CODE:perl:
+setup():
+--- H = associative_array;
+reduce(key k, values v):
+--- foreach value v in values:
+------ H{v}=H{v}+1;
+cleanup():
+--- foreach value v in H:
+------ EmitIntermediate(v,count H{v});
+||
+What happens if this Hadoop job is started with a query log containing 10 billion lines?
+* The Hadoop job crashes and reports an out-of-memory-error.
+*= The Hadoop job runs without an error and outputs the expected results.
+* The Hadoop job does not compile - hashmaps cannot be used in the Reducer.
+* The Hadoop job runs without an error but outputs nothing.
+
+Consider the search engine log again. We now want to know for how many queries users did not find what they were looking for. A user did not find what he was looking for when after submitting a query (logged in our query log), the user as next action then submitted another query. If the action after a submitting a query is a click, we assume the user found what he was looking for. Which of the introduced design patterns offers the best way to implement a program that answers this question?
+* Local aggregation
+* Pairs and stripes
+* Order inversion
+*= Secondary sorting
+
+And again ... the search engine log. We now want to know how many queries overall lead to clicks on Wikipedia pages. The simplest Hadoop job that answers this question consists of:
+*= Only a Mapper and a Counter
+* Only a Mapper and a Reducer
+* Only a Mapper, Reducer and a Counter
+* Only a Reducer
+
+For the last time ... the search engine log. We now also have a second file (the "document log"), containing two columns of data:
+||CODE:java:
+[url] [number of words]
+||
+For each URL on the Web we know the number of words contained in the Web page the URL refers to.
+For instance,
+||CODE:perl:
+http://en.wikipedia.org/wiki/Tom_Jones_%28singer%29  4643
+http://en.wikipedia.org/wiki/Britney_Spears 34221
+http://www.tomjones.com/ 424
+||
+We want to derive a new data set (the "click log"), that only contains the log entries showing a click on a URL as follows:
+||CODE:java:
+[user id] [timestamp] [url] [number of words]
+||
+What should be the intermediate key space of the Mapper to make this join as efficient as possible?
+* When processing the query log, the Mapper emits ([url],-1) as intermediate key. When processing the document log, the Mapper emits ([url],Integer.MAX) as intermediate key.
+* When processing the query log, the Mapper emits [url] as intermediate key. When processing the document log, the Mapper emits ([url],[num. words]) as intermediate key.
+*= When processing the query log, the Mapper emits ([url],-1) as intermediate key. When processing the document log, the Mapper emits ([url],[num. words]) as intermediate key.
+* When processing the query log, the Mapper emits [url] as intermediate key. When processing the document log, the Mapper emits [url] as intermediate key.
+
+Counters can be used to:
+* set cluster-wide values (e.g. the maximum found key value) in order to communicate between machines.
+*= monitor Hadoop jobs during their execution (e.g. the number of Java exceptions thrown).
+* monitor individual machines during job execution.
+* replace the Mapper.
+
+
+Which of the following database operations implemented as Hadoop jobs require the use of a Mapper and a Reducer (instead of only a Mapper)?
+* Selection
+*= Projection
+*= Union
+*= Intersection
+
+The time it takes for a Hadoop job's Map task to finish mostly depends on:
+*= the placement of the blocks required for the Map task
+* the duration of the job's shuffle & sort phase 
+* the placement of the NameNode in the cluster
+* the duration of the job's Reduce task
+
+Which of the following database operations – implemented as Hadoop jobs – require the use of a Mapper and a Reducer (instead of only a Mapper). Assume that the dataset(s) to be used do not fit into the main memory of a single node in the cluster.
+*= Intersection
+* Union (without duplicates removed)
+*= Union (with duplicates removed)
+* Selection
+
+Which of the following are fallacies of distributed computing?
+*= The latency is zero.
+*= The bandwidth is infinite.
+*= The network topology does not change.
+*= The network is reliable.

@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Alike' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //close all the content divs on page load
+      $('.response').hide();
+
+      // toggle slide
+      $('.selection').click(function(){
+        // by calling sibling, we can use same div for all demos
+        $(this).siblings('.response').slideToggle('fast');
+      });
+
+      $('button').click(function(event){
+        var $target = $(event.target);
+        var $checkboxes = $target.parent('.mcq').find('input');
+        for (var i = 0; i < $checkboxes.length; i++) {
+          var $checkbox = $checkboxes.eq(i);
+          a = $checkbox;
+          if ($checkbox[0].checked && $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.correct-checkbox').show();
+          } else if ($checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('wrong')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else if (!$checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else {
+            $checkbox.nextAll('.correct-checkbox').show();
+          }
+        }
+        $target.parent('.mcq').find('.response').slideToggle('fast');
+        if ($target.text() == 'Submit') {
+          $target.text('Hide');
+        } else {
+          $checkboxes.nextAll('.incorrect-checkbox').hide();
+          $checkboxes.nextAll('.correct-checkbox').hide();
+          $target.text('Submit');
+        }
+      });
+    });
+    </script>
+  </head>
+
+<body>
+  $\newcommand{\ones}{\mathbf 1}$
+  <a href="https://chauff.github.io/">Back to HP</a> More quizzes: <a href="hadoop.html">Hadoop</a> <a href="graph.html">Graph</a> <a href="pig.html">Pig</a> <a href="streaming.html">Streaming</a>
+<br>
+<div class="disclaimer">
+<i>All errors are my own! Though if you find any, an email would be appreciated ....</i><br>
+<i>Be aware that some of these questions may not make a lot of sense outside of the taught course.</i>
+<br>
+-Caudia Hauff
+</div>
+<hr>
+  <div>
+	<h1>Pig and Pig Latin</h1>
+	<fieldset>
+		<div>
+			<div class="description">
+Which of the following statements is correct?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Pig is an execution engine that replaces the MapReduce core in Hadoop.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Pig is an execution engine that utilizes the MapReduce core in Hadoop.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Pig is an execution engine that compiles Pig Latin scripts into database queries.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Pig is an execution engine that compiles Pig Latin scripts into HDFS.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Which of the following statements about Pig are not correct?</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">In general, to implement a task, the number of lines of code in Pig and Hadoop are roughly the same.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Pig makes use of Hadoop job chaining.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Code written for the Pig engine is compiled into Hadoop jobs.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Code written for the Pig engine is directly compiled into machine code.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Lets take the following file dataset.txt:
+<pre><code class="java">Frank,19,44,1st_year,12
+John,23,,2nd_year,-1
+Tom,21,,,0
+</pre></code>
+and the following Pig Latin script:
+<pre><code class="java">A = load 'dataset.txt' using PigStorage(',');
+B = filter A by $1&gt;20;
+C = group B by $2;
+dump C;
+</pre></code>
+How many records will be generated as output when running this script?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">0</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">1</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">2</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">3</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Let's consider the file above once more. You are tasked with writing a Pig Latin script that outputs the unique names (first column) occurring in this file. Which Pig Latin operators do you use (choose the minimum number)?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">foreach, distinct</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">filter, distinct</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">foreach, filter</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">foreach</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">filter</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Which of the following definitions of complex data types in Pig are correct?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Tuple: a set of key/value pairs</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Tuple: an ordered set of fields.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Bag: a collection of key/value pairs.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Bag: an ordered set of fields.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Map: an ordered set of fields.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Map: a collection of tuples.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Which guarantee that Hadoop provides does Pig break?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Calls to the Reducer's reduce() method only occur after the last Mapper has finished running.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">All values associated with a single key are processed by the same Reducer.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">The Combiner (if defined) may run multiple times, on the Map-side as well as the Reduce-side.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Task stragglers due to slow machines (not data skew) can be sped up through speculative execution.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+The file 'complex.txt' contains the following two lines (tab delimited):
+<pre><code class="java">TUDELFT   EWI  [adres#Mekelweg,number#4,buildingColor#redblue]    {(computer science), (mathematics), (electronics)}
+TUDELFT    3ME [number#2,adres#Mekelweg,postcode#2628CD] {(mechanical engineering), (maritime engineering), (materials engineering)}
+</pre></code>
+What is the output of the following Pig script?
+<pre><code class="java">complex = load 'complex.txt' as (uni:chararray, faculty:chararray, location:map[], departments:bag{dlist:(d:chararray)});
+A = foreach complex generate uni, flatten(location#'street');
+dump A;
+</pre></code></div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">()</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">()<br>()</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">(TUDELFT,)<br>(TUDELFT,)</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">(TUDELFT)</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Assume you want to join two datasets within a Pig script: Data set 1 consists of all Wikipedia edits (information about how a single Wikipedia page is edited) captured for all languages in one log file across all the year's of Wikipedia's existance (billions of lines of log data); one line contains the following fields $[Unique\ ID, Wikipedia\ URL, Edit\ Timestamp, Editing\ UserID, Number\ of\ Words\ Added]$. The lines are ordered in ascending order by the $Editing\ UserID$.
+Data set 2 consists of information about Wikipedia articles written in Danish (less than 100,000 articles overall): $[Unique\ ID, Wikipedia\ URL, Wikipedia\ Title]$. The join should be performed on $[Wikipedia\ URL]$ and the generated data set should look as follows: $[Edit\ Timestamp, Wikipedia\ URL, Wikipedia\ Title]$.
+Which join is the most efficient one to use here (assuming a Hadop cluster with 20 machines, each one with about 4GB of memory and 1TB of disk space)?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">sort-merge join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">skew join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">fragment-replicate join</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">default join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Assume you want to join two datasets within a Pig script: Data set 1 has an entry per Wikipedia article with the following information: $[Wikipedia\ URL, Last\ Edit\ Timestamp, Editing\ UserID, Number\ of\ Words\ Added]$. The lines are ordered in ascending order by URL. Data set 2 consists also has one line per Wikipedia article and contains the following: $[Unique\ ID, Wikipedia\ URL, Wikipedia\ Title]$. The lines are ordered in ascending order by URL.
+The join should be performed on $[Wikipedia\ URL]$ and the generated data set should look as follows: $[Last\ Edit\ Timestamp, Wikipedia\ URL, Wikipedia\ Title]$.
+Which join is the most efficient one to use here (assuming a Hadop cluster with 20 machines, each one with about 4GB of memory and 1TB of disk space)?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">sort-merge join</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">skew join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">fragment-replicate join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">default join</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Which of the following statements about Pig is correct?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Pig always generates the same number of Hadoop jobs given a particular script, independent of the amount/type of data that is being processed.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Pig replaces the MapReduce core with its own execution engine.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">Pig may generate a different number of Hadoop jobs given a particular script, dependent on the amount/type of data that is being processed.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">When doing a default join, Pig will detect which join-type is probably the most efficient.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Specific static Java functions can be used in Pig like UDFs. Take a look at the following Pig script:
+<pre><code class="java">define hex InvokeForString(‘java.lang.Integer.toHexString’,’int’);nums = load 'numbers' as (n:int);
+inHex = foreach nums generate hex(n);
+</pre></code>
+Apart from these three lines of code, what additional coding responsibilities do we have as developer here?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">We need to write InvokeForString().</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">We need to register the jar containing java.lang.Integer.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">We need to write the toHexString() functionality, extending java.lang.Integer.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">There is nothing else to be done.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Which of the following definitions of complex data types in Pig are correct?</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Tuple: a set of key/value pairs.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Tuple: an ordered set of fields.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Bag: a collection of tuples.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Bag: an ordered set of fields.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Map: a set of key/value pairs.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">Map: a collection of tuples.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+	</fieldset>
+	<br/>
+</div>
+
+  <footer>
+  Page generated using <a href="https://github.com/karanveerm/quizgen">Quizgen</a>
+  </footer>
+</body>
+</html>
