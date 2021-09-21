@@ -29,22 +29,22 @@ Canada is a democratic constitutional monarchy, with the British Sovereign as th
 Below is a short list of sources for locating journals published in Canada or articles published about Canadian law. 
 International & Non-U.S. Law Journals (HeinOnline) This HeinOnline library contains journals focused on international law topics as well as journals published outside of the United States.
  
-Canada Journals (Westlaw - password required) This Westlaw database contains the full text of nearly 40 Canadian legal journals and periodicals, as well as a number of newsletters and law reports. Coverage varies by source. 
+Canada Journals (Westlaw - password required) This Westlaw database contains the full text of nearly 40 Canadian legal journals and periodicals, as well as a number of newsletters and law reports. Coverage varies by source. </p>
 
-**Other Secondary Sources**
+<p>Other Secondary Sources**
 The Practical Guide to Canadian Legal Research (2010) The Practical Guide to Canadian Legal Research provides an excellent overview of print and electronic resources for locating Canadian law. The book covers legal encyclopedias and dictionaries, periodicals, case law, statutes, regulations, Quebec law (based on French civil law), and more. 
-Canadian Encyclopedic Digest (Westlaw – password required) The Canadian Encyclopedic Digest is the only Canadian legal encyclopedia. 
+Canadian Encyclopedic Digest (Westlaw – password required) The Canadian Encyclopedic Digest is the only Canadian legal encyclopedia. </p>
 
- The Best Guide to Canadian Legal Research
-This guide to Canadian legal research is written by Catherine Best, a research lawyer in Vancouver, British Columbia. The guide provides a step-by-step plan for conducting legal research and recommends both print and online sources for conducting research on Canadian law. Please note that the author often references QuickLaw (a LexisNexis product) and LawSource (a Westlaw Canada product) for Canadian law – many of the primary materials contained in these databases can be accessed in the Westlaw law school database (password required).
+<p>The Best Guide to Canadian Legal Research
+This guide to Canadian legal research is written by Catherine Best, a research lawyer in Vancouver, British Columbia. The guide provides a step-by-step plan for conducting legal research and recommends both print and online sources for conducting research on Canadian law. Please note that the author often references QuickLaw (a LexisNexis product) and LawSource (a Westlaw Canada product) for Canadian law – many of the primary materials contained in these databases can be accessed in the Westlaw law school database (password required).</p>
  
-Canada Treatises (Westlaw – password required) This Westlaw database contains Canadian treatises covering all aspects of Canadian law.
-Researching Canadian Law (2019) is an online overview of the Canadian legal system written by Kim Nayyer on GlobaLex (an electronic legal publication dedicated to international and foreign law research). This guide is a compact, efficient starting point for Canadian legal research which is accessible to people who are unfamiliar with the subject matter.  It covers everything from statutes and caselaw to Canadian law school admissions and Canadian law firms.
+<p>Canada Treatises (Westlaw – password required) This Westlaw database contains Canadian treatises covering all aspects of Canadian law.
+Researching Canadian Law (2019) is an online overview of the Canadian legal system written by Kim Nayyer on GlobaLex (an electronic legal publication dedicated to international and foreign law research). This guide is a compact, efficient starting point for Canadian legal research which is accessible to people who are unfamiliar with the subject matter.  It covers everything from statutes and caselaw to Canadian law school admissions and Canadian law firms.</p>
  
-Created by NYU law librarians, this online guide has now been updated 3 times over the years (which speaks well, in my opinion, for continued updates).  
-Canadian Abridgment Digests on WestlawNext Canada (password required) is an online digest, in outline form, with headnotes so that the user can easily locate caselaw related to specific topics.  It covers “virtually every case reported in Canada since 1803, and every reported or unreported case received from the courts since 1986, with the exception of Quebec civil law cases.”
+<p>Created by NYU law librarians, this online guide has now been updated 3 times over the years (which speaks well, in my opinion, for continued updates).  
+Canadian Abridgment Digests on WestlawNext Canada (password required) is an online digest, in outline form, with headnotes so that the user can easily locate caselaw related to specific topics.  It covers “virtually every case reported in Canada since 1803, and every reported or unreported case received from the courts since 1986, with the exception of Quebec civil law cases.”</p>
 
-</p>
+
 <h2 id="question_3">Constitution</h2>
 <p>The Canadian constitution is not one single document, but rather is comprised of multiple pieces of British and Canadian legislation.
  
