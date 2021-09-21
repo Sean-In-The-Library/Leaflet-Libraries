@@ -45,9 +45,15 @@ Created by NYU law librarians, this online guide has now been updated 3 times ov
 Canadian Abridgment Digests on WestlawNext Canada (password required) is an online digest, in outline form, with headnotes so that the user can easily locate caselaw related to specific topics.  It covers “virtually every case reported in Canada since 1803, and every reported or unreported case received from the courts since 1986, with the exception of Quebec civil law cases.”
 
 </p>
-<h2 id="question_3">Data</h2>
-<p>These maps were built using data from the <strong><a href="https://www.phoenixopendata.com/dataset/libraries/resource/b7158429-b69e-4f87-8a96-b4857c6d65b5">Phoenix, AZ Open Data Portal</a></strong>. The data was not linked through the API (since it was broken at the time of creation) so the data is static as of 10/1/2020.</p>
-<h1 id="question_6">The Maps (and R Code-Through)</h1>
+<h2 id="question_3">Constitution</h2>
+<p>The Canadian constitution is not one single document, but rather is comprised of multiple pieces of British and Canadian legislation.
+ 
+ <a href="https://laws-lois.justice.gc.ca/eng/Const/Const_index.html">Constitutional Documents</a>
+
+This Canadian Department of Justice website provides access to the Constitution Acts and the Canadian Charter of Rights and Freedoms.
+</p>
+
+<h1 id="question_6">More International Legal Research</h1>
 
 <p><a href="https://libguides.law.asu.edu/internationallaw"><img src="https://i.imgur.com/hMbcrs4.jpeg" width="750" height="537" /></a></p>
 
