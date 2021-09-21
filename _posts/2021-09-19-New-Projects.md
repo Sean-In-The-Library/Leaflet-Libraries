@@ -26,7 +26,7 @@ The call numbers listed in this guide link to Ross-Blakley Law Library catalog r
 Canada is a democratic constitutional monarchy, with the British Sovereign as the head of State and an elected Prime Minister as the head of Government. The country has a federal system of parliamentary government, in which government responsibilities are shared between the federal, provincial, and territorial governments. There are three branches of government: Executive, Legislative, and Judicial. The Executive branch of government is made up of the British Sovereign, the Cabinet (which includes the Prime Minister), and the administration. The Legislative branch consists of Parliament, and the Judicial branch is composed of the courts of the National Federal Court system as well as the provincial and territorial courts. The federal courts and the court system in nine of the ten provinces and the three territories are based on English common law; in Québec the court system is based on French civil law.
 </p>
 <h2 id="question_2">Journals and Other Secondary Sources</h2>
-<p>**Journals**
+<p>Journals
 Below is a short list of sources for locating journals published in Canada or articles published about Canadian law. 
 International & Non-U.S. Law Journals (HeinOnline) This HeinOnline library contains journals focused on international law topics as well as journals published outside of the United States.
  
