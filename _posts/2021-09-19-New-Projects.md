@@ -51,4 +51,4 @@ Canadian Abridgment Digests on WestlawNext Canada (password required) is an onli
 
 <p><a href="https://libguides.law.asu.edu/internationallaw"><img src="https://i.imgur.com/hMbcrs4.jpeg" width="750" height="537" /></a></p>
 
-*(Click me)*
+*(Click the flag to see our International Research Guide)*
