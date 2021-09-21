@@ -18,8 +18,7 @@ comments: true
 <p>&nbsp;</p>
 <h1 id="question_1">Scope and Introduction</h1>
 <p>
-**Scope**
-This research guide is designed to assist students and scholars in researching Canadian law. The guide details resources for conducting research on the Canadian Constitution, federal and provincial statutes, court cases, and regulations. It also provides information on relevant secondary sources and helpful websites.
+**Scope** This research guide is designed to assist students and scholars in researching Canadian law. The guide details resources for conducting research on the Canadian Constitution, federal and provincial statutes, court cases, and regulations. It also provides information on relevant secondary sources and helpful websites.
  
 The call numbers listed in this guide link to Ross-Blakley Law Library catalog records, which provide information about location and availability of items in the Library collection. Many of the Library’s print international resources can be found in the Foreign & International Collection in the basement of the Library: they appear in the online catalog with the location code “Law Foreign & International.” Electronic resources are indicated in the online catalog with the location code “Online access.” Some electronic resources listed in this guide are only accessible to Sandra Day O’Connor College of Law students, faculty, and staff.
  
