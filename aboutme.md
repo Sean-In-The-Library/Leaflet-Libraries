@@ -4,7 +4,7 @@ title: About me
 subtitle: Why you'd want me as your law librarian
 ---
 
-My name is Sean Harrington (<a href="https://isearch.asu.edu/node/347427/">ASU iSearch Profile</a)). I have:
+My name is Sean Harrington (<a href="https://isearch.asu.edu/node/347427/">ASU iSearch Profile</a>). I have:
 
 - A law degree
 - A library master's
